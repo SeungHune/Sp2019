@@ -12,7 +12,6 @@ int check_arg(char *av[], const char *opt)
 	//check all argument
 	while(*av != '\0')
 	{
-		// opt argument exist?
 		if(!strcmp(av[count], opt))
 		{
 			return TRUE;
@@ -128,7 +127,6 @@ void cmd_cp(int ac, char *av[])
 	FILE *dst;
 	char ch;
 
-	// if arguments less than 2 error
 	if(ac < 3)
 	{
 		fprintf(stderr, "Not enough arguments.\n");
@@ -232,31 +230,13 @@ void cmd_mv(int ac, char *av[])
 // make directory
 void cmd_mkdir(int ac, char *av[])
 {
-	if(ac < 2)
-	{
-		fprintf(stderr, "Not enough arguments.\n");
-		return;
-	}
-
-	if(mkdir(av[1], 0755))
-	{
-		fprintf(stderr, "Make directory failed.\n");
-	}
+	mkdir(av[1]);
 }
 
 // delete directory
 void cmd_rmdir(int ac, char *av[])
 {
-	if(ac < 2)
-	{
-		fprintf(stderr, "Not enough arguments.\n");
-		return;
-	}
-
-	if(rmdir(av[1]))
-	{
-		fprintf(stderr, "Remove directory failed.\n");
-	}
+	rmdir(av[1]);
 }
 
 //cat
@@ -296,8 +276,6 @@ void cmd_allsyms()
 {
 	system("sudo vi /proc/kallsyms");
 }
-
-
 
 //help
 void cmd_help()
